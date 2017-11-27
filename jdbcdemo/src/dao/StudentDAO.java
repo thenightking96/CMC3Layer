@@ -1,14 +1,13 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.print.attribute.standard.PresentationDirection;
 
 import util.SQLQueryStudent;
 import data.ConnectDB;
@@ -120,7 +119,7 @@ public class StudentDAO {
 	/**
 	 * @author User
 	 * @date: Nov 27, 2017
-	 * @param sql 
+	 * @param sql
 	 * @param id
 	 * @return
 	 * @throws SQLException
@@ -142,5 +141,23 @@ public class StudentDAO {
 		}
 		return true;
 
+	}
+
+	/**
+	 * @author User
+	 * @date: Nov 27, 2017
+	 * @param st
+	 * @return
+	 * @throws SQLException
+	 */
+	public ResultSet getByStudent(Student st) throws SQLException {
+		Connection connect;
+		connect = ConnectDB.connect();
+
+		PreparedStatement preparedStatement = connect
+				.prepareStatement(SQLQueryStudent.FIND_BY_ACCOUNT);
+		preparedStatement.setInt(1, st.getStudentId());
+		ResultSet rs = preparedStatement.executeQuery();
+		return rs;
 	}
 }

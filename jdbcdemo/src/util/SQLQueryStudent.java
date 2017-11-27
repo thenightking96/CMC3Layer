@@ -14,4 +14,7 @@ public class SQLQueryStudent {
 			+ FIRST_COLUMN + " =?";
 	public static final String DELETE = "DELETE FROM student WHERE "
 			+ FIRST_COLUMN + " =?";
+
+	public static final String FIND_BY_ACCOUNT = "SELECT StudentId FROM student WHERE "
+			+ FIRST_COLUMN + "=?";
 }
