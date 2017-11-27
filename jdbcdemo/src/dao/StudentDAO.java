@@ -14,8 +14,19 @@ import util.SQLQueryStudent;
 import data.ConnectDB;
 import data.Student;
 
+/**
+ * @author User
+ * @date: Nov 27, 2017
+ */
 public class StudentDAO {
 
+	/**
+	 * @author User
+	 * @date: Nov 27, 2017
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Student> getList(String sql) throws SQLException {
 		Connection connect;
 		try {
@@ -26,9 +37,12 @@ public class StudentDAO {
 
 			while (resultSet.next()) {
 				Student student = new Student();
-				student.setStudentId(resultSet.getInt(SQLQueryStudent.FIRST_COLUMN));
-				student.setFullName(resultSet.getString(SQLQueryStudent.SECOND_COLUMN));
-				student.setAddress(resultSet.getString(SQLQueryStudent.THIRD_COLUMN));
+				student.setStudentId(resultSet
+						.getInt(SQLQueryStudent.FIRST_COLUMN));
+				student.setFullName(resultSet
+						.getString(SQLQueryStudent.SECOND_COLUMN));
+				student.setAddress(resultSet
+						.getString(SQLQueryStudent.THIRD_COLUMN));
 				student.setAge(resultSet.getInt(SQLQueryStudent.FORTH_COLUMN));
 				list.add(student);
 			}
@@ -41,6 +55,14 @@ public class StudentDAO {
 		}
 	}
 
+	/**
+	 * @author User
+	 * @date: Nov 27, 2017
+	 * @param student
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean insert(Student student, String sql) throws SQLException {
 		Connection connect;
 
@@ -63,6 +85,14 @@ public class StudentDAO {
 		return true;
 	}
 
+	/**
+	 * @author User
+	 * @date: Nov 27, 2017
+	 * @param student
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean update(Student student, String sql) throws SQLException {
 		Connection connect;
 		connect = ConnectDB.connect();
@@ -87,8 +117,15 @@ public class StudentDAO {
 		return true;
 	}
 
-	public boolean delete(String sql, int id)
-			throws SQLException {
+	/**
+	 * @author User
+	 * @date: Nov 27, 2017
+	 * @param sql 
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean delete(String sql, int id) throws SQLException {
 		Connection connect;
 		connect = ConnectDB.connect();
 		PreparedStatement preparedStatement = connect.prepareStatement(sql);

@@ -16,7 +16,7 @@ public class Main {
 //		studentBUS.update(studentupdate);
 //		Student studentInsert = new Student(7,"Lê Thị Thu Trang","Nghệ An",21);
 //		studentBUS.insert(studentInsert);
-		studentBUS.delete(3);
+		studentBUS.delete(4);
 		System.out.println("Danh sách sinh viên");
 		
 		List<Student> listStudent = new ArrayList<Student>();
